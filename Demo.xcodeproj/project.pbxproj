@@ -17,6 +17,7 @@
 		8A77BF0F23F7E12900F8538B /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9C6FE23F7C19100CF60EB /* TweetCell.swift */; };
 		8A77BF1023F7E12900F8538B /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9C6FC23F7BF8B00CF60EB /* Tweet.swift */; };
 		8A77BF1223F8180E00F8538B /* PreviewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A77BF1123F8180E00F8538B /* PreviewContainer.swift */; };
+		8A77BF1A23F85B5B00F8538B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AD9C6F123F7BC6900CF60EB /* Assets.xcassets */; };
 		8AD9C6E923F7BC6700CF60EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9C6E823F7BC6700CF60EB /* AppDelegate.swift */; };
 		8AD9C6ED23F7BC6700CF60EB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9C6EC23F7BC6700CF60EB /* ViewController.swift */; };
 		8AD9C6F223F7BC6900CF60EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AD9C6F123F7BC6900CF60EB /* Assets.xcassets */; };
@@ -212,6 +213,7 @@
 			files = (
 				8A77BF0823F7E0EB00F8538B /* LaunchScreen.storyboard in Resources */,
 				8A77BF0523F7E0EB00F8538B /* Preview Assets.xcassets in Resources */,
+				8A77BF1A23F85B5B00F8538B /* Assets.xcassets in Resources */,
 				8A77BF0223F7E0EB00F8538B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

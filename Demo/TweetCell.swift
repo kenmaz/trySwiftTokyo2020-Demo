@@ -14,29 +14,66 @@ final class TweetCell: UITableViewCell {
     private lazy var messageLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .body)
-        label.textColor = .darkText
+        label.adjustsFontForContentSizeCategory = true
+        label.textColor = UIColor(named: "BodyText")
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         return label
     }()
 
+    private lazy var avatarImageView: UIImageView = {
+        let view = UIImageView(image: UIImage(named: "avatar"))
+        view.layer.cornerRadius = 16
+        view.layer.masksToBounds = true
+        NSLayoutConstraint.activate([
+            view.widthAnchor.constraint(equalToConstant: 32),
+            view.heightAnchor.constraint(equalToConstant: 32),
+        ])
+        return view
+    }()
+
+    private lazy var pictureImageView: UIImageView = {
+        let view = UIImageView(image: UIImage(named: "picture"))
+        view.contentMode = .scaleAspectFill
+        view.layer.cornerRadius = 8
+        view.layer.masksToBounds = true
+        view.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        return view
+    }()
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = .systemBackground
 
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.isLayoutMarginsRelativeArrangement = true
-        stack.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
-        stack.translatesAutoresizingMaskIntoConstraints = false
-
+        let stack = UIStackView(
+            axis: .horizontal,
+            alignment: .top,
+            spacing: 8,
+            distribution: .fill,
+            padding: UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16),
+            subviews:
+            [
+                avatarImageView,
+                UIStackView(
+                    axis: .vertical,
+                    alignment: .fill,
+                    spacing: 8,
+                    distribution: .fill,
+                    subviews:
+                    [
+                        messageLabel,
+                        pictureImageView,
+                    ]
+                )
+            ]
+        )
         contentView.addSubview(stack)
-        contentView.topAnchor.constraint(equalTo: stack.topAnchor).isActive = true
-        contentView.bottomAnchor.constraint(equalTo: stack.bottomAnchor).isActive = true
-        contentView.leadingAnchor.constraint(equalTo: stack.leadingAnchor).isActive = true
-        contentView.trailingAnchor.constraint(equalTo: stack.trailingAnchor).isActive = true
-
-        stack.addArrangedSubview(messageLabel)
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: stack.topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: stack.bottomAnchor),
+            contentView.leadingAnchor.constraint(equalTo: stack.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: stack.trailingAnchor),
+        ])
     }
 
     required init?(coder: NSCoder) {
@@ -45,5 +82,33 @@ final class TweetCell: UITableViewCell {
 
     func apply(input: Input) {
         messageLabel.text = input.message
+        pictureImageView.isHidden = !input.hasPicture
+    }
+}
+
+extension UIStackView {
+    public convenience init(
+        axis: NSLayoutConstraint.Axis,
+        alignment: UIStackView.Alignment = .fill,
+        spacing: CGFloat = 0,
+        distribution: UIStackView.Distribution = .fill,
+        padding: UIEdgeInsets? = nil,
+        subviews: [UIView]
+    ){
+        self.init(arrangedSubviews: subviews)
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.alignment = alignment
+        self.axis = axis
+        self.spacing = spacing
+        self.distribution = distribution
+        if let padding = padding {
+            isLayoutMarginsRelativeArrangement = true
+            layoutMargins = padding
+        }
+    }
+
+    public func with(_ block: (UIStackView) -> Void) -> UIStackView {
+        block(self)
+        return self
     }
 }

@@ -10,5 +10,6 @@ import Foundation
 
 struct Tweet {
     var message: String
-    var isFavorited: Bool
+    var hasPicture: Bool = false
+    var isFavorited: Bool = false
 }

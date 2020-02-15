@@ -15,7 +15,7 @@ final class PreviewContainer: UIView {
         self.view = view
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .secondarySystemBackground
+        backgroundColor = .lightGray
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         NSLayoutConstraint.activate([
