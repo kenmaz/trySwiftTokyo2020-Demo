@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class TweetCell: UIView {
+final class TestCell: UITableViewCell {
     typealias Input = Tweet
 
     private lazy var messageLabel: UILabel = {
@@ -20,9 +20,9 @@ final class TweetCell: UIView {
         return label
     }()
 
-    init() {
-        super.init(frame: .zero)
-        backgroundColor = .red
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        contentView.backgroundColor = .red
 
         let stack = UIStackView()
         stack.axis = .vertical
@@ -30,7 +30,6 @@ final class TweetCell: UIView {
         stack.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         stack.translatesAutoresizingMaskIntoConstraints = false
 
-        let contentView = self
         contentView.addSubview(stack)
         contentView.topAnchor.constraint(equalTo: stack.topAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: stack.bottomAnchor).isActive = true
