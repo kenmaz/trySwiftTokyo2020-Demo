@@ -49,28 +49,13 @@ final class TweetCell: UITableViewCell {
             contentView.backgroundColor = .white
         }
 
-        let stack = UIStackView(
-            axis: .horizontal,
-            alignment: .top,
-            spacing: 8,
-            distribution: .fill,
-            padding: UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16),
-            subviews:
-            [
-                avatarImageView,
-                UIStackView(
-                    axis: .vertical,
-                    alignment: .fill,
-                    spacing: 8,
-                    distribution: .fill,
-                    subviews:
-                    [
-                        messageLabel,
-                        pictureImageView,
-                    ]
-                )
-            ]
-        )
+        let stack = UIStackView(axis: .horizontal, alignment: .top, spacing: 8, padding: UIEdgeInsets.all(16), subviews: [
+            avatarImageView,
+            UIStackView(axis: .vertical, spacing: 8, subviews:[
+                messageLabel,
+                pictureImageView,
+            ])
+        ])
         contentView.addSubview(stack)
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: stack.topAnchor),
@@ -87,6 +72,12 @@ final class TweetCell: UITableViewCell {
     func apply(input: Input) {
         messageLabel.text = input.message
         pictureImageView.isHidden = !input.hasPicture
+    }
+}
+
+extension UIEdgeInsets {
+    static func all(_ value: CGFloat) -> UIEdgeInsets {
+        UIEdgeInsets(top: value, left: value, bottom: value, right: value)
     }
 }
 
