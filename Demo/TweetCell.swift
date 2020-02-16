@@ -33,7 +33,7 @@ final class TweetCell: UITableViewCell {
     }()
 
     private lazy var pictureImageView: UIImageView = {
-        let view = UIImageView(image: UIImage(named: "picture"))
+        let view = UIImageView(frame: .zero)
         view.contentMode = .scaleAspectFill
         view.layer.cornerRadius = 8
         view.layer.masksToBounds = true
@@ -81,7 +81,13 @@ final class TweetCell: UITableViewCell {
 
     func apply(input: Input) {
         messageLabel.text = input.message
-        pictureImageView.isHidden = !input.hasPicture
+
+        if let picture = input.picture {
+            pictureImageView.isHidden = false
+            pictureImageView.image = picture
+        } else {
+            pictureImageView.isHidden = true
+        }
     }
 }
 

@@ -15,10 +15,10 @@ class ViewController: UITableViewController {
         Tweet(message: "Hello, iOS Developer"),
         Tweet(message: "I'm sleepy"),
         Tweet(message: "Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text "),
-        Tweet(message: "Hello, try! Swift Tokyo", hasPicture: true),
-        Tweet(message: "Hello, iOS Developer", hasPicture: true),
-        Tweet(message: "I'm sleepy", hasPicture: true),
-        Tweet(message: "Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text ", hasPicture: true),
+        Tweet(message: "Hello, try! Swift Tokyo", picture: UIImage(named: "picture")),
+        Tweet(message: "Hello, iOS Developer", picture: UIImage(named: "picture")),
+        Tweet(message: "I'm sleepy", picture: UIImage(named: "picture")),
+        Tweet(message: "Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text Long Text ", picture: UIImage(named: "picture")),
     ]
 
     override func viewDidLoad() {

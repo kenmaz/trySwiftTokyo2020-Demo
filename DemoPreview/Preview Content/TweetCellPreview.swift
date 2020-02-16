@@ -34,7 +34,7 @@ struct TweetCellPreview: PreviewProvider {
                 .previewDisplayName("Short text")
             Preview(.init(message: longText))
                 .previewDisplayName("Long text")
-            Preview(.init(message: text, hasPicture: true))
+            Preview(.init(message: text, picture: UIImage(named: "picture")))
                 .previewDisplayName("With picture")
             Preview(.init(message: text))
                 .environment(\.colorScheme, .dark)

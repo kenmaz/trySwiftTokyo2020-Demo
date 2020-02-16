@@ -6,10 +6,9 @@
 //  Copyright © 2020 kenmaz. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct Tweet {
     var message: String
-    var hasPicture: Bool = false
-    var isFavorited: Bool = false
+    var picture: UIImage?
 }
