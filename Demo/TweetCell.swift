@@ -43,7 +43,11 @@ final class TweetCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .systemBackground
+        if #available(iOS 13.0, *) {
+            contentView.backgroundColor = .systemBackground
+        } else {
+            contentView.backgroundColor = .white
+        }
 
         let stack = UIStackView(
             axis: .horizontal,
