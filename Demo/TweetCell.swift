@@ -45,11 +45,6 @@ final class TweetCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        if #available(iOS 13.0, *) {
-            contentView.backgroundColor = .systemBackground
-        } else {
-            contentView.backgroundColor = .white
-        }
 
         let stack = UIStackView(axis: .horizontal, alignment: .top, spacing: 8, padding: UIEdgeInsets.all(16), subviews: [
             avatarImageView,
@@ -65,10 +60,23 @@ final class TweetCell: UITableViewCell {
             contentView.leadingAnchor.constraint(equalTo: stack.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: stack.trailingAnchor),
         ])
+        setHighlighted(false, animated: false)
     }
 
     required init?(coder: NSCoder) {
         fatalError()
+    }
+
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        if highlighted {
+            contentView.backgroundColor = .lightGray
+        } else {
+            if #available(iOS 13.0, *) {
+                contentView.backgroundColor = .systemBackground
+            } else {
+                contentView.backgroundColor = .white
+            }
+        }
     }
 
     func apply(input: Input) {
