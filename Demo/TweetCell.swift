@@ -37,7 +37,9 @@ final class TweetCell: UITableViewCell {
         view.contentMode = .scaleAspectFill
         view.layer.cornerRadius = 8
         view.layer.masksToBounds = true
-        view.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        let const = view.heightAnchor.constraint(equalToConstant: 80)
+        const.priority = .defaultHigh
+        const.isActive = true
         return view
     }()
 
